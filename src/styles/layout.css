@@ -18,6 +18,13 @@
     padding-block: 120px 96px;
   }
 
+  .about-section {
+    display: grid;
+    align-items: start;
+    gap: 48px;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  }
+
   .section__header {
     max-width: 760px;
     margin-bottom: 40px;
@@ -65,6 +72,10 @@
       min-height: auto;
       grid-template-columns: 1fr;
       padding-block: 72px;
+    }
+
+    .about-section {
+      grid-template-columns: 1fr;
     }
   }
 }
