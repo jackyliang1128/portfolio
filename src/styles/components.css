@@ -346,9 +346,11 @@
     border: 1px solid var(--border);
     border-radius: 28px;
     background:
-      radial-gradient(circle at top right, rgba(34, 211, 238, 0.18), transparent 34%),
+      radial-gradient(circle at top right, rgba(34, 211, 238, 0.14), transparent 46%),
       linear-gradient(180deg, var(--surface-glass), var(--surface));
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+      var(--shadow-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
     padding: 24px;
     backdrop-filter: blur(18px);
   }
@@ -547,13 +549,13 @@
   .about-card::after {
     position: absolute;
     inset: auto 24px 0 auto;
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.16), transparent 68%);
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent 72%);
     content: "";
     pointer-events: none;
-    transform: translate(24px, 30px);
+    transform: translate(40px, 56px);
   }
 
   .about-card__metric {
@@ -925,12 +927,12 @@
   .skill-card::after {
     position: absolute;
     inset: 0 0 auto auto;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.14), transparent 68%);
+    width: 170px;
+    height: 170px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent 72%);
     content: "";
     pointer-events: none;
-    transform: translate(30px, -36px);
+    transform: translate(50px, -56px);
   }
 
   .skill-card h3 {
@@ -1091,9 +1093,11 @@
     border: 1px solid var(--border);
     border-radius: 28px;
     background:
-      radial-gradient(circle at top right, rgba(34, 211, 238, 0.16), transparent 36%),
+      radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 48%),
       var(--surface);
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+      var(--shadow-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
     padding: 24px;
   }
 
@@ -1144,9 +1148,11 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
     background:
-      radial-gradient(circle at top, rgba(34, 211, 238, 0.14), transparent 36%),
+      radial-gradient(circle at top, rgba(34, 211, 238, 0.1), transparent 50%),
       var(--surface);
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+      var(--shadow-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
     padding: 48px;
     text-align: center;
   }
@@ -1232,7 +1238,7 @@
   [data-theme="dark"] .contact-card {
     border-color: var(--border-strong);
     background:
-      radial-gradient(circle at top right, rgba(34, 211, 238, 0.1), transparent 34%),
+      radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 48%),
       var(--surface);
   }
 
