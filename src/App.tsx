@@ -11,7 +11,7 @@ import { education, experiences, profile, projects, skillCategories } from './da
 function App() {
   return (
     <div className="min-h-screen">
-      <Navigation links={profile.navigation} />
+      <Navigation links={profile.navigation} name={profile.name} />
       <main>
         <Hero profile={profile} />
         <About profile={profile} />

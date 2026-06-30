@@ -3,32 +3,31 @@ import { ThemeToggle } from './ThemeToggle'
 
 type NavigationProps = {
   links: NavigationLink[]
+  name: string
 }
 
-export function Navigation({ links }: NavigationProps) {
+export function Navigation({ links, name }: NavigationProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/70 bg-surface/85 backdrop-blur-xl">
-      <nav
-        aria-label="Primary navigation"
-        className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8"
-      >
-        <a href="#home" className="text-sm font-bold uppercase tracking-[0.3em] text-ink">
-          JL
+    <header className="site-header">
+      <nav aria-label="Primary navigation" className="site-nav">
+        <a href="#home" className="brand" aria-label={`${name} home`}>
+          <span className="brand__mark" aria-hidden="true">JL</span>
+          <span className="brand__text">{name}</span>
         </a>
-        <ul className="hidden items-center gap-6 text-sm font-medium text-muted md:flex">
+        <ul className="nav-list">
           {links.map((link) => (
             <li key={link.href}>
-              <a className="transition hover:text-brand focus-visible:outline-brand" href={link.href}>
+              <a className="nav-link" href={link.href}>
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-3">
+        <div className="nav-actions">
           <ThemeToggle />
           <a
             href="#contact"
-            className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand focus-visible:outline-brand"
+            className="button button--secondary button--compact"
           >
             Contact
           </a>

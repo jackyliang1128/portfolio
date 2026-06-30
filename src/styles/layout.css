@@ -9,6 +9,15 @@
     width: min(100%, var(--container-wide));
   }
 
+  .hero {
+    display: grid;
+    min-height: calc(100vh - 80px);
+    align-items: center;
+    gap: 56px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    padding-block: 120px 96px;
+  }
+
   .section__header {
     max-width: 760px;
     margin-bottom: 40px;
@@ -48,6 +57,14 @@
 
     .section__header {
       margin-bottom: 32px;
+    }
+  }
+
+  @media (max-width: 920px) {
+    .hero {
+      min-height: auto;
+      grid-template-columns: 1fr;
+      padding-block: 72px;
     }
   }
 }
