@@ -41,6 +41,19 @@
   --shadow-md: 0 16px 44px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 24px 80px rgba(15, 23, 42, 0.12);
 
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  --space-section: 96px;
+  --space-section-mobile: 72px;
   --container: 1120px;
   --container-wide: 1280px;
 
