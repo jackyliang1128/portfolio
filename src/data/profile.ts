@@ -29,6 +29,7 @@ export type Profile = {
 
 export type Project = {
   name: string
+  visualKind: 'database' | 'fitness' | 'accessibility' | 'pipeline'
   stack: string[]
   summary: string
   impact: string
@@ -102,6 +103,7 @@ export const profile: Profile = {
 export const projects: Project[] = [
   {
     name: 'Outdoor Activity Management System',
+    visualKind: 'database',
     stack: ['Java', 'SQL', 'Oracle'],
     summary:
       'A database-backed application for managing hiking trails, campsites, weather logs, and trip records through interactive UI panels.',
@@ -116,6 +118,7 @@ export const projects: Project[] = [
   },
   {
     name: 'FitTrack',
+    visualKind: 'fitness',
     stack: ['Java', 'JUnit', 'Swing', 'Git'],
     summary:
       'A desktop fitness tracker for recording activities, personalizing workout plans, and visualizing user progress.',
@@ -130,6 +133,7 @@ export const projects: Project[] = [
   },
   {
     name: 'WCAG Guidelines Checker',
+    visualKind: 'accessibility',
     stack: ['React', 'JavaScript', 'HTML', 'CSS'],
     summary:
       'A React accessibility evaluation tool that checks web content against WCAG-inspired rules and provides real-time remediation suggestions.',
@@ -144,6 +148,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Sensor Glove Capstone Project',
+    visualKind: 'pipeline',
     stack: ['Python', 'C#', 'OpenCV', '.NET'],
     summary:
       'A wearable control system enabling researchers to remotely operate a robotic arm with precise gesture input.',
