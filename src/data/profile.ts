@@ -41,6 +41,7 @@ export type Project = {
 
 export type SkillCategory = {
   name: string
+  description: string
   skills: string[]
 }
 
@@ -165,20 +166,29 @@ export const projects: Project[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: 'Languages',
-    skills: ['Java', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Python', 'SQL', 'C++', 'C#', 'R'],
-  },
-  {
-    name: 'Frontend',
-    skills: ['React', 'Responsive UI', 'Accessibility', 'Tailwind CSS', 'Playwright'],
+    name: 'Frontend Systems',
+    description: 'Building responsive, accessible interfaces with clean component structure.',
+    skills: ['React', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Accessibility'],
   },
   {
     name: 'Backend & Data',
-    skills: ['Drupal 11', 'PHP 8.3+', 'PostgreSQL', 'Oracle SQL', 'Java/Spring Boot', '.NET'],
+    description: 'Designing backend logic, database workflows, and data-backed application features.',
+    skills: ['Java', 'PHP 8.3+', 'PostgreSQL', 'Oracle SQL', 'Drupal 11', 'Java/Spring Boot'],
   },
   {
-    name: 'Cloud, Testing & Tools',
-    skills: ['Jest', 'Docker', 'AWS', 'Azure App Service', 'Sentry', 'Git', 'Bitbucket CI/CD'],
+    name: 'Quality Engineering',
+    description: 'Creating automated checks and improving confidence in product delivery.',
+    skills: ['Playwright', 'Jest', 'JUnit', 'Regression Testing', 'QA Workflows', 'Sentry'],
+  },
+  {
+    name: 'Cloud & Delivery',
+    description: 'Supporting deployment workflows and reducing friction in release processes.',
+    skills: ['Azure App Service', 'Docker', 'AWS', 'Git', 'Bitbucket CI/CD'],
+  },
+  {
+    name: 'Programming Foundations',
+    description: 'Applying computer science fundamentals to practical engineering problems.',
+    skills: ['Python', 'C++', 'C#', 'R', '.NET', 'Systems Thinking'],
   },
 ]
 
