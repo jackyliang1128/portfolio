@@ -1040,6 +1040,37 @@
     font-weight: 800;
   }
 
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    width: min(100%, var(--container));
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-inline: auto;
+    padding: 32px 24px;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .site-footer__inner p {
+    margin: 0;
+  }
+
+  .site-footer__inner a {
+    color: var(--accent-blue);
+    font-weight: 800;
+    transition: color var(--transition-base);
+  }
+
+  .site-footer__inner a:hover {
+    color: var(--accent-blue-strong);
+  }
+
   .theme-toggle {
     display: inline-flex;
     width: 56px;
@@ -1210,6 +1241,12 @@
 
     .contact-card__actions {
       flex-direction: column;
+    }
+
+    .site-footer__inner {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-inline: 20px;
     }
   }
 }
