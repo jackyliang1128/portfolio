@@ -8,6 +8,20 @@
       name="description"
       content="Jacky Liang is a UBC computer science student and full-stack developer building production web platforms, automated testing systems, and applied software projects."
     />
+    <script>
+      ;(() => {
+        const portfolioTheme = localStorage.getItem('jacky-portfolio-theme')
+        const resolvedTheme =
+          portfolioTheme === 'light' || portfolioTheme === 'dark'
+            ? portfolioTheme
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+
+        document.documentElement.dataset.theme = resolvedTheme
+        document.documentElement.style.colorScheme = resolvedTheme
+      })()
+    </script>
     <title>Jacky Liang | Full-Stack Developer Portfolio</title>
   </head>
   <body>

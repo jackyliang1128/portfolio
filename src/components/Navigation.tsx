@@ -1,4 +1,5 @@
 import type { NavigationLink } from '../data/profile'
+import { ThemeToggle } from './ThemeToggle'
 
 type NavigationProps = {
   links: NavigationLink[]
@@ -23,12 +24,15 @@ export function Navigation({ links }: NavigationProps) {
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand focus-visible:outline-brand"
-        >
-          Contact
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand focus-visible:outline-brand"
+          >
+            Contact
+          </a>
+        </div>
       </nav>
     </header>
   )
