@@ -159,6 +159,7 @@
   .tag {
     display: inline-flex;
     align-items: center;
+    border: 1px solid var(--border);
     border-radius: var(--radius-full);
     background: var(--surface-soft);
     color: var(--text-secondary);
@@ -1080,6 +1081,76 @@
 
   .site-footer__inner a:hover {
     color: var(--accent-blue-strong);
+  }
+
+  [data-theme="dark"] .site-header {
+    background: rgba(2, 6, 23, 0.92);
+  }
+
+  [data-theme="dark"] .card,
+  [data-theme="dark"] .project-card,
+  [data-theme="dark"] .timeline-card {
+    border-color: var(--border);
+    background: var(--surface);
+  }
+
+  [data-theme="dark"] .snapshot-card,
+  [data-theme="dark"] .credibility-strip,
+  [data-theme="dark"] .education-card,
+  [data-theme="dark"] .contact-card {
+    border-color: var(--border-strong);
+    background:
+      radial-gradient(circle at top right, rgba(34, 211, 238, 0.1), transparent 34%),
+      var(--surface);
+  }
+
+  [data-theme="dark"] .snapshot-card::before,
+  [data-theme="dark"] .project-visual::before {
+    background-image:
+      linear-gradient(to right, rgba(203, 213, 225, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(203, 213, 225, 0.055) 1px, transparent 1px);
+  }
+
+  [data-theme="dark"] .snapshot-panel,
+  [data-theme="dark"] .credibility-item,
+  [data-theme="dark"] .tag,
+  [data-theme="dark"] .project-card__impact,
+  [data-theme="dark"] .project-card__proof,
+  [data-theme="dark"] .snapshot-pipeline li,
+  [data-theme="dark"] .audit-row,
+  [data-theme="dark"] .schema-node {
+    border-color: var(--border);
+    background: var(--surface-elevated);
+    color: var(--text-secondary);
+  }
+
+  [data-theme="dark"] .mock-database,
+  [data-theme="dark"] .mock-app-window,
+  [data-theme="dark"] .mock-audit,
+  [data-theme="dark"] .pipeline-node {
+    border-color: var(--border);
+    background: var(--surface);
+  }
+
+  [data-theme="dark"] .project-visual {
+    background:
+      radial-gradient(circle at 20% 10%, rgba(34, 211, 238, 0.12), transparent 28%),
+      radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.12), transparent 30%),
+      var(--surface-soft);
+  }
+
+  [data-theme="dark"] .button--secondary,
+  [data-theme="dark"] .theme-toggle {
+    border-color: var(--border-strong);
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+  }
+
+  [data-theme="dark"] .badge,
+  [data-theme="dark"] .snapshot-card__status {
+    border-color: var(--border-strong);
+    background: var(--surface-elevated);
+    color: var(--text-primary);
   }
 
   .theme-toggle {
