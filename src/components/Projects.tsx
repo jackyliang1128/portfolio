@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import type { Project } from '../data/profile'
 import { Section } from './Section'
 
@@ -89,8 +90,13 @@ export function Projects({ projects }: ProjectsProps) {
       description="Selected projects that demonstrate full-stack development, accessibility, data modeling, product thinking, and engineering systems work."
     >
       <div className="projects-grid">
-        {projects.map((project) => (
-          <article key={project.name} className="project-card">
+        {projects.map((project, index) => (
+          <article
+            key={project.name}
+            className="project-card"
+            data-reveal
+            style={{ '--reveal-delay': `${index * 90}ms` } as CSSProperties}
+          >
             <ProjectVisual project={project} />
 
             <div className="project-card__body">

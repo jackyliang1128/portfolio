@@ -8,7 +8,7 @@ export function Contact({ profile }: ContactProps) {
 
   return (
     <section id="contact" className="section">
-      <div className="contact-card">
+      <div className="contact-card" data-reveal>
         <p className="section__eyebrow">Contact</p>
         <h2>Let&apos;s build reliable software.</h2>
         <p>

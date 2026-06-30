@@ -11,7 +11,7 @@ type SectionProps = {
 export function Section({ id, eyebrow, title, description, children }: SectionProps) {
   return (
     <section id={id} className="section">
-      <div className="section__header">
+      <div className="section__header" data-reveal>
         <p className="section__eyebrow">{eyebrow}</p>
         <h2 className="section__title">{title}</h2>
         {description ? <p className="section__description">{description}</p> : null}

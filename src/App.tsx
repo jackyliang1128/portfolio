@@ -8,8 +8,11 @@ import { Navigation } from './components/Navigation'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { education, experiences, profile, projects, skillCategories } from './data/profile'
+import { useScrollReveal } from './hooks/useScrollReveal'
 
 function App() {
+  useScrollReveal()
+
   return (
     <div className="app-shell">
       <Navigation links={profile.navigation} name={profile.name} />

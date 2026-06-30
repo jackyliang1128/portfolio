@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import type { Education, Experience } from '../data/profile'
 import { Section } from './Section'
 
@@ -15,10 +16,12 @@ export function ExperienceTimeline({ experiences, education }: ExperienceTimelin
     >
       <div className="experience-layout">
         <div className="timeline">
-          {experiences.map((experience) => (
+          {experiences.map((experience, index) => (
             <article
               key={`${experience.role}-${experience.organization}`}
               className="timeline-card"
+              data-reveal
+              style={{ '--reveal-delay': `${index * 90}ms` } as CSSProperties}
             >
               <div className="timeline-card__header">
                 <div>
@@ -42,7 +45,7 @@ export function ExperienceTimeline({ experiences, education }: ExperienceTimelin
             </article>
           ))}
         </div>
-        <aside className="education-card">
+        <aside className="education-card" data-reveal>
           <h3>Education</h3>
           <div className="education-list">
             {education.map((item) => (

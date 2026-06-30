@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import type { Profile } from '../data/profile'
 
 type AboutProps = {
@@ -7,7 +8,7 @@ type AboutProps = {
 export function About({ profile }: AboutProps) {
   return (
     <section id="about" className="section about-section">
-      <div className="about-section__content">
+      <div className="about-section__content" data-reveal>
         <p className="section__eyebrow">About</p>
         <h2 className="section__title">A developer with full-stack, QA, and systems thinking.</h2>
         <div className="about-section__copy">
@@ -25,8 +26,13 @@ export function About({ profile }: AboutProps) {
       </div>
 
       <div className="about-card-grid">
-        {profile.highlights.map((highlight) => (
-          <article key={highlight.title} className="about-card card">
+        {profile.highlights.map((highlight, index) => (
+          <article
+            key={highlight.title}
+            className="about-card card"
+            data-reveal
+            style={{ '--reveal-delay': `${index * 80}ms` } as CSSProperties}
+          >
             <div className="about-card__metric">{highlight.metric}</div>
             <h3>{highlight.title}</h3>
             <p>{highlight.description}</p>

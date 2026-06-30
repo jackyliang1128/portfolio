@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import type { SkillCategory } from '../data/profile'
 import { Section } from './Section'
 
@@ -14,8 +15,13 @@ export function Skills({ skillCategories }: SkillsProps) {
       description="A practical toolkit built around shipping reliable web applications, testing user flows, and supporting maintainable systems."
     >
       <div className="skills-grid">
-        {skillCategories.map((category) => (
-          <article key={category.name} className="skill-card card">
+        {skillCategories.map((category, index) => (
+          <article
+            key={category.name}
+            className="skill-card card"
+            data-reveal
+            style={{ '--reveal-delay': `${index * 80}ms` } as CSSProperties}
+          >
             <h3>{category.name}</h3>
             <p>{category.description}</p>
             <div className="skill-card__tags">
