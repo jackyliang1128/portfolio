@@ -63,9 +63,56 @@ export function ThemeToggle() {
         setTheme(nextTheme)
       }}
     >
+      <SunIcon className="theme-toggle__track-icon theme-toggle__track-icon--sun" />
+      <MoonIcon className="theme-toggle__track-icon theme-toggle__track-icon--moon" />
       <span className="theme-toggle__knob" aria-hidden="true">
-        <span className="theme-toggle__icon">{theme === 'dark' ? 'D' : 'L'}</span>
+        {theme === 'dark' ? (
+          <MoonIcon className="theme-toggle__icon" />
+        ) : (
+          <SunIcon className="theme-toggle__icon" />
+        )}
       </span>
     </button>
+  )
+}
+
+type IconProps = {
+  className?: string
+}
+
+function SunIcon({ className }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </svg>
+  )
+}
+
+function MoonIcon({ className }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
   )
 }
