@@ -1,13 +1,13 @@
 # Jacky Liang Portfolio
 
-React, TypeScript, Vite, and Tailwind CSS portfolio website for showcasing full-stack software engineering work.
+React, TypeScript, Vite, and custom CSS portfolio website for showcasing full-stack software engineering work.
 
 ## Tech stack
 
 - React
 - TypeScript
 - Vite
-- Tailwind CSS
+- Custom responsive CSS
 - Oxlint
 
 ## Scripts
@@ -24,15 +24,16 @@ npm run preview
 Portfolio content lives in `src\data\profile.ts` as typed TypeScript data:
 
 - Profile summary and social links
-- Project case-study cards
-- Skill categories
+- Featured and supporting project cards
+- Real project screenshots and engineering details
 - Experience entries
 - Education entries
 
 This keeps content updates separate from layout components.
 
-## Pending setup
+## Deployment checklist
 
-- Add GitHub, resume, and project source links.
-- Choose and connect a static contact form provider such as Formspree, Web3Forms, or Getform.
-- Choose a deployment target, likely GitHub Pages or Vercel.
+- Deploy the production build to Vercel.
+- Connect and verify the custom domain.
+- Confirm the resume and all external project links from the deployed site.
+- Add the stable custom-domain URL to the resume.
