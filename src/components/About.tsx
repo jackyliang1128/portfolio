@@ -1,5 +1,5 @@
-import type { CSSProperties } from 'react'
 import type { Profile } from '../data/profile'
+import { Section } from './Section'
 
 type AboutProps = {
   profile: Profile
@@ -7,38 +7,18 @@ type AboutProps = {
 
 export function About({ profile }: AboutProps) {
   return (
-    <section id="about" className="section about-section">
-      <div className="about-section__content" data-reveal>
-        <p className="section__eyebrow">About</p>
-        <h2 className="section__title">A developer with full-stack, QA, and systems thinking.</h2>
+    <Section
+      id="about"
+      eyebrow="About"
+      title="Full-stack development grounded in systems thinking."
+    >
+      <div className="about-card card" data-reveal>
         <div className="about-section__copy">
-          <p>
-            I enjoy building software that is practical, maintainable, and easy to use. My
-            background combines full-stack development, software testing, and engineering systems,
-            which helps me think about both product experience and technical reliability.
-          </p>
-          <p>
-            I have worked on production web platforms, automated testing workflows, deployment
-            improvements, and data-backed applications. I am especially interested in full-stack
-            roles where I can contribute across frontend, backend, testing, and delivery.
-          </p>
+          {profile.about.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </div>
-
-      <div className="about-card-grid">
-        {profile.highlights.map((highlight, index) => (
-          <article
-            key={highlight.title}
-            className="about-card card"
-            data-reveal
-            style={{ '--reveal-delay': `${index * 80}ms` } as CSSProperties}
-          >
-            <div className="about-card__metric">{highlight.metric}</div>
-            <h3>{highlight.title}</h3>
-            <p>{highlight.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+    </Section>
   )
 }

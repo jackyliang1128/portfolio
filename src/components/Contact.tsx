@@ -4,22 +4,20 @@ type ContactProps = {
 }
 
 export function Contact({ profile }: ContactProps) {
-  const readySocials = profile.socials.filter((social) => social.href && social.status === 'ready')
-
   return (
     <section id="contact" className="section">
       <div className="contact-card" data-reveal>
         <p className="section__eyebrow">Contact</p>
         <h2>Let&apos;s build reliable software.</h2>
         <p>
-          I am open to junior software engineer, full-stack developer, internship, and new grad
-          opportunities. If my background fits your team, I would be happy to connect.
+          I&apos;m open to software engineering opportunities. If my work fits what your team is
+          building, I&apos;d be happy to connect.
         </p>
         <div className="contact-card__actions">
           <a className="button button--primary" href={`mailto:${profile.email}`}>
             Email Me
           </a>
-          {readySocials.map((social) => (
+          {profile.socials.map((social) => (
             <a
               key={social.label}
               className="button button--secondary"

@@ -1,147 +1,124 @@
 import type { CSSProperties } from 'react'
-import type { Project } from '../data/profile'
+import type { Project, ProjectImage } from '../data/profile'
 import { Section } from './Section'
 
 type ProjectsProps = {
   projects: Project[]
 }
 
-type ProjectVisualProps = {
-  project: Project
+type ProjectMediaProps = {
+  image: ProjectImage
+  eager?: boolean
 }
 
-function ProjectVisual({ project }: ProjectVisualProps) {
+function ProjectMedia({ image, eager = false }: ProjectMediaProps) {
   return (
-    <div
-      className={`project-visual project-visual--${project.visualKind}`}
-      role="img"
-      aria-label={`${project.name} visual mockup`}
+    <figure className="project-media">
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading={eager ? 'eager' : 'lazy'}
+        fetchPriority={eager ? 'high' : 'auto'}
+      />
+      {image.caption ? <figcaption>{image.caption}</figcaption> : null}
+    </figure>
+  )
+}
+
+type ProjectCardProps = {
+  project: Project
+  index: number
+}
+
+function ProjectCard({ project, index }: ProjectCardProps) {
+  const isFeatured = project.tier === 'featured'
+
+  return (
+    <article
+      className={`project-card project-card--${project.tier}`}
+      data-reveal
+      style={{ '--reveal-delay': `${index * 90}ms` } as CSSProperties}
     >
-      {project.visualKind === 'database' ? (
-        <div className="mock-database">
-          <div className="mock-toolbar">
-            <span>OutdoorDB</span>
-            <span>16 schemas</span>
-          </div>
-          <div className="schema-map">
-            <span className="schema-node schema-node--primary">Activities</span>
-            <span className="schema-node">Users</span>
-            <span className="schema-node">Bookings</span>
-            <span className="schema-node">Reviews</span>
-            <span className="schema-node">Weather</span>
-          </div>
+      {project.primaryImage ? (
+        <div className="project-card__media">
+          <ProjectMedia image={project.primaryImage} eager={index === 0} />
         </div>
       ) : null}
 
-      {project.visualKind === 'fitness' ? (
-        <div className="mock-app-window">
-          <div className="mock-toolbar">
-            <span>FitTrack</span>
-            <span>Weekly Activity</span>
-          </div>
-          <div className="fitness-dashboard">
-            <div className="progress-ring">78%</div>
-            <div className="fitness-stats">
-              <span>Workouts</span>
-              <strong>5 / week</strong>
-              <span>Streak</span>
-              <strong>12 days</strong>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {project.visualKind === 'accessibility' ? (
-        <div className="mock-audit">
-          <div className="mock-toolbar">
-            <span>WCAG Scan Report</span>
-            <span>Score 92</span>
-          </div>
-          <div className="audit-list">
-            {['Contrast', 'Alt Text', 'ARIA Labels', 'Keyboard Nav'].map((item, index) => (
-              <div key={item} className="audit-row">
-                <span>{item}</span>
-                <strong>{index === 1 ? 'Warning' : index === 3 ? 'Review' : 'Pass'}</strong>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : null}
-
-      {project.visualKind === 'pipeline' ? (
-        <div className="mock-pipeline">
-          {['Flex Sensors', 'Microcontroller', 'Processing', 'Gesture Output'].map((step) => (
-            <span key={step} className="pipeline-node">
-              {step}
+      <div className="project-card__body">
+        <div className="project-card__stack" aria-label={`${project.name} technologies`}>
+          {project.stack.map((technology) => (
+            <span key={technology} className="tag">
+              {technology}
             </span>
           ))}
         </div>
-      ) : null}
-    </div>
+
+        {isFeatured ? <h3>{project.name}</h3> : <h4>{project.name}</h4>}
+        <p className="project-card__summary">{project.summary}</p>
+
+        <div className="project-card__actions">
+          {project.demoUrl ? (
+            <a className="button button--primary" href={project.demoUrl} target="_blank" rel="noreferrer">
+              {project.demoLabel ?? 'Live Demo'}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ) : null}
+          {project.sourceUrl ? (
+            <a className="button button--secondary" href={project.sourceUrl} target="_blank" rel="noreferrer">
+              GitHub
+              <span aria-hidden="true">↗</span>
+            </a>
+          ) : null}
+        </div>
+
+        <details className="project-details">
+          <summary>Engineering details</summary>
+          <ul>
+            {project.details.map((detail) => (
+              <li key={detail}>{detail}</li>
+            ))}
+          </ul>
+
+          {project.gallery?.length ? (
+            <div className="project-gallery">
+              {project.gallery.map((image) => (
+                <ProjectMedia key={image.src} image={image} />
+              ))}
+            </div>
+          ) : null}
+        </details>
+      </div>
+    </article>
   )
 }
 
 export function Projects({ projects }: ProjectsProps) {
+  const featuredProjects = projects.filter((project) => project.tier === 'featured')
+  const supportingProjects = projects.filter((project) => project.tier === 'supporting')
+
   return (
     <Section
       id="projects"
-      eyebrow="Projects"
-      title="Selected projects with product context and technical depth."
-      description="Selected projects that demonstrate full-stack development, accessibility, data modeling, product thinking, and engineering systems work."
+      eyebrow="Selected work"
+      title="Real products, open and ready to explore."
+      description="Two deployed projects lead the way, with supporting work that shows my range across web, games, and data-backed applications."
     >
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <article
-            key={project.name}
-            className="project-card"
-            data-reveal
-            style={{ '--reveal-delay': `${index * 90}ms` } as CSSProperties}
-          >
-            <ProjectVisual project={project} />
-
-            <div className="project-card__body">
-              <div className="project-card__stack">
-                {project.stack.map((technology) => (
-                  <span key={technology} className="tag">
-                    {technology}
-                  </span>
-                ))}
-              </div>
-
-              <h3>{project.name}</h3>
-              <p className="project-card__summary">{project.summary}</p>
-              <p className="project-card__impact">{project.impact}</p>
-
-              <ul className="project-card__highlights">
-                {project.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-
-              <div className="project-card__footer">
-                <div className="project-card__proof">
-                  <span>Showcase plan</span>
-                  <p>{project.showcasePlan}</p>
-                </div>
-
-                {project.sourceUrl || project.demoUrl ? (
-                  <div className="project-card__actions">
-                    {project.sourceUrl ? (
-                      <a href={project.sourceUrl} target="_blank" rel="noreferrer">
-                        Source Code
-                      </a>
-                    ) : null}
-                    {project.demoUrl ? (
-                      <a href={project.demoUrl} target="_blank" rel="noreferrer">
-                        Live Demo
-                      </a>
-                    ) : null}
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </article>
+      <div className="featured-projects">
+        {featuredProjects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
+      </div>
+
+      <div className="supporting-projects">
+        <h3 className="supporting-projects__title">More projects</h3>
+        <div className="supporting-projects__grid">
+          {supportingProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index + featuredProjects.length} />
+          ))}
+        </div>
       </div>
     </Section>
   )

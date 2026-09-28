@@ -5,14 +5,15 @@ export type NavigationLink = {
 
 export type SocialLink = {
   label: string
-  href?: string
-  status: 'ready' | 'pending'
+  href: string
 }
 
-export type ProfileHighlight = {
-  metric: string
-  title: string
-  description: string
+export type ProjectImage = {
+  src: string
+  alt: string
+  width: number
+  height: number
+  caption?: string
 }
 
 export type Profile = {
@@ -20,37 +21,33 @@ export type Profile = {
   role: string
   location: string
   email: string
-  summary: string
   availability: string
+  tagline: string
+  about: string[]
+  resumeUrl: string
   navigation: NavigationLink[]
   socials: SocialLink[]
-  highlights: ProfileHighlight[]
 }
 
 export type Project = {
+  id: string
   name: string
-  visualKind: 'database' | 'fitness' | 'accessibility' | 'pipeline'
+  tier: 'featured' | 'supporting'
   stack: string[]
   summary: string
-  impact: string
-  highlights: string[]
+  details: string[]
   sourceUrl?: string
   demoUrl?: string
-  showcasePlan: string
-}
-
-export type SkillCategory = {
-  name: string
-  description: string
-  skills: string[]
+  demoLabel?: string
+  primaryImage?: ProjectImage
+  gallery?: ProjectImage[]
 }
 
 export type Experience = {
   role: string
   organization: string
   period: string
-  summary: string
-  highlights: string[]
+  contribution: string
 }
 
 export type Education = {
@@ -61,134 +58,127 @@ export type Education = {
 
 export const profile: Profile = {
   name: 'Jacky Liang',
-  role: 'Computer Science Student & Full-Stack Developer',
+  role: 'Full-Stack Software Engineer',
   location: 'Vancouver, BC',
   email: 'jackyliang1128@gmail.com',
-  summary:
-    'UBC computer science student building production web platforms, automated regression pipelines, and applied software systems across web, testing, data, and hardware-adjacent domains.',
-  availability: 'Seeking full-stack software engineering opportunities.',
+  availability: 'Open to software engineering opportunities.',
+  tagline: 'I build full-stack software that turns real workflows into reliable, usable products.',
+  about: [
+    'My work spans product interfaces, REST APIs, relational data, automated testing, and cloud delivery.',
+    'Before computer science, I trained and worked as a mechanical engineer—a background that still shapes how I break down systems and build for reliability.',
+  ],
+  resumeUrl: '/resume/Jacky-Liang-Resume.pdf',
   navigation: [
-    { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ],
   socials: [
-    { label: 'GitHub', href: undefined, status: 'pending' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/jackyliang-/', status: 'ready' },
-    { label: 'Resume', href: undefined, status: 'pending' },
-  ],
-  highlights: [
-    {
-      metric: 'Production',
-      title: 'Full-stack delivery',
-      description:
-        'Building Drupal, PHP, PostgreSQL, Azure App Service, and authentication features for public enterprise web properties.',
-    },
-    {
-      metric: 'CI/CD',
-      title: 'Quality automation',
-      description:
-        'Integrating Jest and Playwright suites into delivery pipelines to catch regressions and support continuous delivery.',
-    },
-    {
-      metric: '<0.15s',
-      title: 'Real-time systems mindset',
-      description:
-        'Engineered a sensor glove control pipeline that met low-latency robotic arm response requirements.',
-    },
+    { label: 'GitHub', href: 'https://github.com/jackyliang1128' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/jackyliang-/' },
+    { label: 'Resume', href: '/resume/Jacky-Liang-Resume.pdf' },
   ],
 }
 
 export const projects: Project[] = [
   {
+    id: 'loyalty-rewards',
+    name: 'Loyalty Rewards Platform',
+    tier: 'featured',
+    stack: ['React', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'AWS'],
+    summary:
+      'A loyalty platform used by a Vancouver salon to manage customer points, staff check-ins, and reward redemption.',
+    details: [
+      'Designed relational data models and REST APIs for customers, point transactions, rewards, and business operations.',
+      'Implemented JWT authentication and role-based workflows for administrators, employees, and customers.',
+      'Deployed the application on AWS with an automated delivery workflow.',
+    ],
+    demoUrl: 'https://app.sparklenailsvancouver.com/demo',
+    demoLabel: 'Try Demo',
+    primaryImage: {
+      src: '/projects/loyalty-dashboard.webp',
+      alt: 'Loyalty Rewards demo dashboard showing sample customer and points activity',
+      width: 1440,
+      height: 1000,
+      caption: 'Admin dashboard · demo data',
+    },
+    gallery: [
+      {
+        src: '/projects/loyalty-checkin.webp',
+        alt: 'Employee check-in screen with a sample phone number keypad',
+        width: 1440,
+        height: 1000,
+        caption: 'Employee check-in · demo data',
+      },
+      {
+        src: '/projects/loyalty-rewards.webp',
+        alt: 'Customer rewards screen showing sample rewards and point costs',
+        width: 1440,
+        height: 1000,
+        caption: 'Customer rewards · demo data',
+      },
+    ],
+  },
+  {
+    id: 'return-to-office',
+    name: 'Return to the Office',
+    tier: 'featured',
+    stack: ['JavaScript', 'Phaser 3', 'Vite', 'Vercel'],
+    summary:
+      'A browser survival game where players battle office-themed enemies, collect upgrades, and survive escalating waves.',
+    details: [
+      'Organized gameplay into modular scenes and reusable player, enemy, boss, and pickup entities.',
+      'Built reusable combat and upgrade systems for targeting, projectiles, and stacked effects.',
+      'Implemented XP progression and configurable difficulty that escalates throughout a run.',
+    ],
+    sourceUrl: 'https://github.com/jackyliang1128/office-survival-game',
+    demoUrl: 'https://return-to-the-office.vercel.app/',
+    demoLabel: 'Play Game',
+    primaryImage: {
+      src: '/projects/office-gameplay.webp',
+      alt: 'Return to the Office gameplay with the player surrounded by office-themed enemies',
+      width: 1280,
+      height: 680,
+      caption: 'Active browser gameplay',
+    },
+    gallery: [
+      {
+        src: '/projects/office-upgrade.webp',
+        alt: 'Return to the Office level-up screen with three upgrade choices',
+        width: 1280,
+        height: 680,
+        caption: 'Upgrade selection during a run',
+      },
+    ],
+  },
+  {
+    id: 'outdoor-activity',
     name: 'Outdoor Activity Management System',
-    visualKind: 'database',
+    tier: 'supporting',
     stack: ['Java', 'SQL', 'Oracle'],
     summary:
-      'A database-backed application for managing hiking trails, campsites, weather logs, and trip records through interactive UI panels.',
-    impact:
-      'Demonstrates relational modeling, backend CRUD design, input validation, and data integrity across a 16-schema Oracle database.',
-    highlights: [
-      'Designed tables, relationships, and seed data for a stable backend foundation.',
-      'Connected Java UI panels to Oracle CRUD operations for viewing, updating, and managing outdoor activity data.',
-      'Enforced constraints and validation rules to keep user data reliable.',
+      'A Java and Oracle application for organizing hiking trails, campsites, weather records, and outdoor trips.',
+    details: [
+      'Modeled relationships across users, trails, campsites, weather records, reviews, and photos.',
+      'Connected interactive Java UI panels to database CRUD operations.',
+      'Enforced input validation and database constraints to keep records consistent.',
     ],
-    showcasePlan: 'Use as a case-study card with schema notes, screenshots, and a GitHub link when available.',
+    sourceUrl: 'https://github.com/jackyliang1128/Outdoor-Activity-Management-System',
   },
   {
+    id: 'fittrack',
     name: 'FitTrack',
-    visualKind: 'fitness',
-    stack: ['Java', 'JUnit', 'Swing', 'Git'],
+    tier: 'supporting',
+    stack: ['Java', 'Swing', 'JUnit', 'JSON'],
     summary:
-      'A desktop fitness tracker for recording activities, personalizing workout plans, and visualizing user progress.',
-    impact:
-      'Shows object-oriented design, persistence, test coverage, and iterative feature development in a Java application.',
-    highlights: [
-      'Architected an object-oriented domain model for activities, plans, and progress tracking.',
-      'Implemented JSON persistence for loading and saving workout history.',
-      'Built comprehensive JUnit coverage across statements, branches, functions, edge cases, and exceptions.',
+      'A desktop fitness tracker for building workout plans, recording exercises, and saving workout history.',
+    details: [
+      'Designed object-oriented models for exercises and personalized workout plans.',
+      'Implemented JSON persistence to save and restore workout data.',
+      'Tested core logic, edge cases, and exception handling with JUnit.',
     ],
-    showcasePlan: 'Best showcased with screenshots, repository notes, and a short walkthrough GIF later.',
-  },
-  {
-    name: 'WCAG Guidelines Checker',
-    visualKind: 'accessibility',
-    stack: ['React', 'JavaScript', 'HTML', 'CSS'],
-    summary:
-      'A React accessibility evaluation tool that checks web content against WCAG-inspired rules and provides real-time remediation suggestions.',
-    impact:
-      'Directly relevant to frontend quality because it combines UI development, content parsing, and accessible user feedback.',
-    highlights: [
-      'Built modular JavaScript analysis logic for identifying accessibility violations.',
-      'Presented findings through a responsive React interface optimized for rapid scanning.',
-      'Focused suggestions on actionable remediation rather than generic pass/fail output.',
-    ],
-    showcasePlan: 'Strong candidate for a future hosted demo because it is frontend-focused and easy to deploy.',
-  },
-  {
-    name: 'Sensor Glove Capstone Project',
-    visualKind: 'pipeline',
-    stack: ['Python', 'C#', 'OpenCV', '.NET'],
-    summary:
-      'A wearable control system enabling researchers to remotely operate a robotic arm with precise gesture input.',
-    impact:
-      'Highlights applied engineering, real-time computer vision, cross-language integration, and performance tuning.',
-    highlights: [
-      'Built an OpenCV gesture detection pipeline to process sensor input in real time.',
-      'Implemented the communication layer between the glove and robotic arm.',
-      'Tuned gesture-classification algorithms to meet latency and error-rate requirements.',
-    ],
-    showcasePlan: 'Best showcased with photos, architecture diagrams, and performance metrics instead of a web demo.',
-  },
-]
-
-export const skillCategories: SkillCategory[] = [
-  {
-    name: 'Frontend Systems',
-    description: 'Building responsive, accessible interfaces with clean component structure.',
-    skills: ['React', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Accessibility'],
-  },
-  {
-    name: 'Backend & Data',
-    description: 'Designing backend logic, database workflows, and data-backed application features.',
-    skills: ['Java', 'PHP 8.3+', 'PostgreSQL', 'Oracle SQL', 'Drupal 11', 'Java/Spring Boot'],
-  },
-  {
-    name: 'Quality Engineering',
-    description: 'Creating automated checks and improving confidence in product delivery.',
-    skills: ['Playwright', 'Jest', 'JUnit', 'Regression Testing', 'QA Workflows', 'Sentry'],
-  },
-  {
-    name: 'Cloud & Delivery',
-    description: 'Supporting deployment workflows and reducing friction in release processes.',
-    skills: ['Azure App Service', 'Docker', 'AWS', 'Git', 'Bitbucket CI/CD'],
-  },
-  {
-    name: 'Programming Foundations',
-    description: 'Applying computer science fundamentals to practical engineering problems.',
-    skills: ['Python', 'C++', 'C#', 'R', '.NET', 'Systems Thinking'],
+    sourceUrl: 'https://github.com/jackyliang1128/Fitness-Tracker',
   },
 ]
 
@@ -196,49 +186,30 @@ export const experiences: Experience[] = [
   {
     role: 'Full Stack Developer',
     organization: 'BC Liquor Distribution Branch',
-    period: 'Jan. 2026 - Current',
-    summary:
-      'Building production website features and deployment automation for enterprise public web platforms.',
-    highlights: [
-      'Supports bcldb.com, cannabis content pages, wholesale.bcldb.com, and miniOrange authentication using Drupal 11, PHP 8.3+, PostgreSQL, and Azure App Service.',
-      'Designed automated deployment delivery that reduced expected production downtime from 4 hours to 30 minutes.',
-      'Developing CI/CD automation for a Java/Spring Boot B2B shipping-rate calculation service.',
-    ],
+    period: 'Jan. 2026 – Aug. 2026',
+    contribution:
+      'Built Drupal features and reusable CI/CD workflows across enterprise applications, reducing expected production deployment downtime from four hours to 30 minutes.',
   },
   {
     role: 'Software Development Engineer in Test',
     organization: 'OnTraccr Technologies',
-    period: 'Sep. 2025 - Dec. 2025',
-    summary:
-      'Created automated regression coverage and supported delivery quality through test suites, Jira reporting, and PR review.',
-    highlights: [
-      'Developed backend Jest suites and end-to-end Playwright tests for bug analysis and edge-case discovery.',
-      'Integrated tests into Bitbucket CI/CD to run automated regression checks on every build.',
-      'Collaborated in sprint planning and stand-ups to scope product features and critical QA tasks.',
-    ],
+    period: 'Sep. 2025 – Dec. 2025',
+    contribution:
+      'Built Jest and Playwright regression suites and integrated them into Bitbucket CI/CD for automated checks on every build.',
   },
   {
     role: 'Undergraduate Teaching Assistant',
     organization: 'University of British Columbia',
-    period: 'Jul. 2025 - Current',
-    summary:
-      'Guiding students through Java programming, object-oriented design, debugging, testing, and modular code practices.',
-    highlights: [
-      'Facilitated lab sessions and office hours for Java programming exercises.',
-      'Reviewed student submissions and provided feedback on unit testing, modularity, and best practices.',
-      'Collaborated with course staff to improve instructional materials and learning outcomes.',
-    ],
+    period: 'Jul. 2025 – Present',
+    contribution:
+      'Guide students through Java, object-oriented design, testing, and debugging in labs and office hours.',
   },
   {
     role: 'Design Engineer',
     organization: 'FPS Food Process Solutions',
-    period: 'Nov. 2023 - Sep. 2024',
-    summary:
-      'Led mechanical design work for industrial fryer systems while coordinating requirements, trade-offs, and manufacturability.',
-    highlights: [
-      'Collaborated with international engineering teams and suppliers to refine requirements and resolve design trade-offs.',
-      'Produced detailed CAD models and technical drawings for assembly, verification, and production review.',
-    ],
+    period: 'Nov. 2023 – Sep. 2024',
+    contribution:
+      'Led industrial equipment design work while coordinating requirements and manufacturability across international teams and suppliers.',
   },
 ]
 
@@ -246,7 +217,7 @@ export const education: Education[] = [
   {
     degree: 'Bachelor of Computer Science',
     institution: 'University of British Columbia',
-    period: 'Sept. 2024 - May 2027',
+    period: 'Sept. 2024 – May 2028',
   },
   {
     degree: 'Bachelor of Applied Science in Mechanical Engineering',

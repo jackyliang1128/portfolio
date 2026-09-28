@@ -1,13 +1,11 @@
 import { About } from './components/About'
 import { Contact } from './components/Contact'
-import { CredibilityStrip } from './components/CredibilityStrip'
 import { ExperienceTimeline } from './components/ExperienceTimeline'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Navigation } from './components/Navigation'
 import { Projects } from './components/Projects'
-import { Skills } from './components/Skills'
-import { education, experiences, profile, projects, skillCategories } from './data/profile'
+import { education, experiences, profile, projects } from './data/profile'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 function App() {
@@ -15,13 +13,11 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Navigation links={profile.navigation} name={profile.name} />
+      <Navigation links={profile.navigation} name={profile.name} resumeUrl={profile.resumeUrl} />
       <main>
         <Hero profile={profile} />
-        <CredibilityStrip />
-        <About profile={profile} />
         <Projects projects={projects} />
-        <Skills skillCategories={skillCategories} />
+        <About profile={profile} />
         <ExperienceTimeline experiences={experiences} education={education} />
         <Contact profile={profile} />
       </main>

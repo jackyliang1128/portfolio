@@ -30,18 +30,7 @@ export function ExperienceTimeline({ experiences, education }: ExperienceTimelin
                 </div>
                 <span>{experience.period}</span>
               </div>
-              <p className="timeline-card__summary">{experience.summary}</p>
-              {experience.highlights.some((highlight) => highlight.includes('4 hours to 30 minutes')) ? (
-                <div className="metric-card">
-                  <span>Deployment downtime reduced</span>
-                  <strong>4 hours to 30 minutes</strong>
-                </div>
-              ) : null}
-              <ul className="timeline-card__highlights">
-                {experience.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
+              <p className="timeline-card__summary">{experience.contribution}</p>
             </article>
           ))}
         </div>
