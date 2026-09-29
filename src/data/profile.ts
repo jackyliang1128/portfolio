@@ -60,8 +60,9 @@ export const profile: Profile = {
   location: 'Vancouver, BC',
   email: 'jackyliang1128@gmail.com',
   about: [
-    'My work spans product interfaces, REST APIs, relational data, automated testing, and cloud delivery.',
-    'Before computer science, I trained and worked as a mechanical engineer—a background that still shapes how I break down systems and build for reliability.',
+    'I am a Computer Science student at the University of British Columbia with a background in Mechanical Engineering. My path into software started with a curiosity about how things work and evolved into a passion for turning ideas into projects that are useful to the people around me.',
+    'I believe software development, at its core, is about problem solving. I enjoy the process of taking something complex, breaking it down, and continuously iterating on the design until I arrive at an innovative and effective solution that is simple and useful.',
+    'Outside of software, I enjoy snowboarding, playing ultimate frisbee and volleyball, working out, and spending time outdoors. I am always up for trying something new, especially if it gets me outside.',
   ],
   resumeUrl: '/resume/Jacky_Resume.pdf',
   navigation: [
