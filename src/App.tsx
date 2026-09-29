@@ -15,7 +15,7 @@ function App() {
     <div className="app-shell">
       <Navigation links={profile.navigation} name={profile.name} resumeUrl={profile.resumeUrl} />
       <main>
-        <Hero profile={profile} />
+        <Hero />
         <About profile={profile} />
         <Projects projects={projects} />
         <ExperienceTimeline experiences={experiences} education={education} />

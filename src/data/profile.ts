@@ -21,8 +21,6 @@ export type Profile = {
   role: string
   location: string
   email: string
-  availability: string
-  tagline: string
   about: string[]
   resumeUrl: string
   navigation: NavigationLink[]
@@ -61,8 +59,6 @@ export const profile: Profile = {
   role: 'Full-Stack Software Engineer',
   location: 'Vancouver, BC',
   email: 'jackyliang1128@gmail.com',
-  availability: 'Open to software engineering opportunities.',
-  tagline: 'I build full-stack software that turns real workflows into reliable, usable products.',
   about: [
     'My work spans product interfaces, REST APIs, relational data, automated testing, and cloud delivery.',
     'Before computer science, I trained and worked as a mechanical engineer—a background that still shapes how I break down systems and build for reliability.',

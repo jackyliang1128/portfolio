@@ -14,44 +14,82 @@
     transform: none;
   }
 
-  @keyframes heroRise {
-    from {
-      opacity: 0;
-      transform: translateY(22px);
-    }
-
+  @keyframes heroGearSpin {
     to {
-      opacity: 1;
-      transform: none;
+      transform: rotate(360deg);
     }
   }
 
-  .hero .badge,
-  .hero__eyebrow,
-  .hero__title,
-  .hero__summary,
-  .hero__actions {
-    animation: heroRise 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  @keyframes heroSignalFlow {
+    0%, 12% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+
+    22% {
+      opacity: 0.9;
+    }
+
+    68% {
+      opacity: 0.9;
+    }
+
+    78%, 100% {
+      opacity: 0;
+      stroke-dashoffset: -700;
+    }
   }
 
-  .hero .badge {
-    animation-delay: 40ms;
+  @keyframes heroLaptopWake {
+    0%, 58%, 100% {
+      opacity: 0.25;
+    }
+
+    72%, 88% {
+      opacity: 1;
+    }
   }
 
-  .hero__eyebrow {
-    animation-delay: 110ms;
+  @keyframes heroLaptopGlow {
+    0%, 58%, 100% {
+      opacity: 0;
+    }
+
+    72%, 88% {
+      opacity: 0.22;
+    }
   }
 
-  .hero__title {
-    animation-delay: 190ms;
+  @keyframes heroScrollHint {
+    0%, 100% {
+      transform: translate(-50%, -2px);
+    }
+
+    50% {
+      transform: translate(-50%, 3px);
+    }
   }
 
-  .hero__summary {
-    animation-delay: 290ms;
+  .hero-gear {
+    animation: heroGearSpin 22s linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
   }
 
-  .hero__actions {
-    animation-delay: 390ms;
+  .hero-transition-flow {
+    animation: heroSignalFlow 4s ease-in-out infinite;
+  }
+
+  .hero-laptop__code {
+    animation: heroLaptopWake 4s ease-in-out infinite;
+  }
+
+  .hero-laptop__glow {
+    animation: heroLaptopGlow 4s ease-in-out infinite;
+  }
+
+  .hero__scroll-cue {
+    animation: heroScrollHint 2.4s ease-in-out infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -61,12 +99,21 @@
       transition: none;
     }
 
-    .hero .badge,
-    .hero__eyebrow,
-    .hero__title,
-    .hero__summary,
-    .hero__actions {
+    .hero-gear,
+    .hero-transition-flow,
+    .hero-laptop__code,
+    .hero-laptop__glow,
+    .hero__scroll-cue {
       animation: none;
+    }
+
+    .hero-transition-flow,
+    .hero-laptop__glow {
+      opacity: 0.9;
+    }
+
+    .hero-laptop__code {
+      opacity: 0.7;
     }
   }
 }

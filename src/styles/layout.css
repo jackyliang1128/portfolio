@@ -11,10 +11,14 @@
   }
 
   .hero {
+    position: relative;
     display: flex;
-    min-height: 650px;
+    min-height: calc(100svh - 69px);
     align-items: center;
-    padding-block: 112px 88px;
+    justify-content: center;
+    overflow: hidden;
+    padding-block: 64px;
+    isolation: isolate;
   }
 
   .section__header {
@@ -81,11 +85,6 @@
   }
 
   @media (max-width: 920px) {
-    .hero {
-      min-height: 560px;
-      padding-block: 88px 64px;
-    }
-
     .project-card--featured {
       grid-template-columns: 1fr;
     }
