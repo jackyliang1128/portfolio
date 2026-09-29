@@ -67,7 +67,7 @@ export const profile: Profile = {
     'My work spans product interfaces, REST APIs, relational data, automated testing, and cloud delivery.',
     'Before computer science, I trained and worked as a mechanical engineer—a background that still shapes how I break down systems and build for reliability.',
   ],
-  resumeUrl: '/resume/Jacky-Liang-Resume.pdf',
+  resumeUrl: '/resume/Jacky_Resume.pdf',
   navigation: [
     { label: 'Projects', href: '#projects' },
     { label: 'About', href: '#about' },
@@ -76,8 +76,8 @@ export const profile: Profile = {
   ],
   socials: [
     { label: 'GitHub', href: 'https://github.com/jackyliang1128' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/jackyliang-/' },
-    { label: 'Resume', href: '/resume/Jacky-Liang-Resume.pdf' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/jackyyliang/' },
+    { label: 'Resume', href: '/resume/Jacky_Resume.pdf' },
   ],
 }
 
