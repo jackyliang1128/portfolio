@@ -15,9 +15,14 @@ export function About({ profile }: AboutProps) {
           ))}
         </div>
 
-        <div className="about-section__portrait" role="img" aria-label="Profile photo placeholder">
-          <span className="about-section__initials">JL</span>
-          <span className="about-section__portrait-label">Profile photo</span>
+        <div className="about-section__portrait">
+          <img
+            src="/about/me.PNG"
+            alt="me"
+            width="864"
+            height="1184"
+            loading="eager"
+          />
         </div>
       </div>
     </Section>
