@@ -21,6 +21,8 @@
   --accent-cyan-strong: #0e7490;
   --accent-teal: #14b8a6;
   --accent-indigo: #4f46e5;
+  --status-error: #b42318;
+  --status-error-soft: rgba(220, 38, 38, 0.08);
 
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -73,6 +75,8 @@
   --accent-cyan-strong: #67e8f9;
   --accent-teal: #5eead4;
   --accent-indigo: #818cf8;
+  --status-error: #fca5a5;
+  --status-error-soft: rgba(248, 113, 113, 0.12);
 
   --shadow-sm: 0 10px 34px rgba(0, 0, 0, 0.26);
   --shadow-md: 0 20px 60px rgba(0, 0, 0, 0.32);
