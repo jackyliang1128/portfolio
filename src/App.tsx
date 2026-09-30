@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { ExperienceTimeline } from './components/ExperienceTimeline'
@@ -22,6 +23,7 @@ function App() {
         <Contact />
       </main>
       <Footer profile={profile} />
+      <Analytics />
     </div>
   )
 }
