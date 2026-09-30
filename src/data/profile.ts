@@ -241,7 +241,7 @@ export const projects: Project[] = [
   },
   {
     id: 'outdoor-activity',
-    name: 'Outdoor Activity Management System',
+    name: 'Outdoor Activity Manager',
     tier: 'supporting',
     stack: ['Java', 'SQL', 'Oracle'],
     summary:
