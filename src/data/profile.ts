@@ -56,13 +56,12 @@ export type Experience = {
   role: string
   organization: string
   period: string
-  contribution: string
-}
-
-export type Education = {
-  degree: string
-  institution: string
-  period: string
+  logo: {
+    src: string
+    alt: string
+    layout?: 'wide' | 'portrait'
+  }
+  highlights: string[]
 }
 
 export const profile: Profile = {
@@ -264,42 +263,58 @@ export const experiences: Experience[] = [
   {
     role: 'Full Stack Developer',
     organization: 'BC Liquor Distribution Branch',
-    period: 'Jan. 2026 – Aug. 2026',
-    contribution:
-      'Built Drupal features and reusable CI/CD workflows across enterprise applications, reducing expected production deployment downtime from four hours to 30 minutes.',
+    period: 'Jan. 2026 - Aug. 2026',
+    logo: {
+      src: '/experience/bcldb.png',
+      alt: 'BC Liquor Distribution Branch logo',
+      layout: 'wide',
+    },
+    highlights: [
+      'Developed features for BCLDB\'s Drupal platform using PHP, PostgreSQL, and Azure App Service, supporting three enterprise web applications and a miniOrange authentication integration.',
+      'Designed reusable CI/CD workflows for Drupal and Spring Boot applications to automate builds, testing, and deployments across three environments, reducing manual deployment steps and standardizing enterprise releases.',
+      'Engineered automated Drupal deployment workflows using GitHub Actions and Azure OIDC, reducing expected production deployment downtime from four hours to 30 minutes.',
+    ],
   },
   {
     role: 'Software Development Engineer in Test',
     organization: 'OnTraccr Technologies',
-    period: 'Sep. 2025 – Dec. 2025',
-    contribution:
-      'Built Jest and Playwright regression suites and integrated them into Bitbucket CI/CD for automated checks on every build.',
+    period: 'Sep. 2025 - Dec. 2025',
+    logo: {
+      src: '/experience/ontraccr.jpg',
+      alt: 'OnTraccr Technologies logo',
+      layout: 'portrait',
+    },
+    highlights: [
+      'Developed automated backend test suites with Jest and end-to-end UI tests using Playwright to analyze bugs, identify edge cases, provide detailed Jira reports, and perform pull request reviews.',
+      'Integrated test suites into the Bitbucket CI/CD build and deployment pipeline, enabling automated regression checks on every build, reducing production defects, and supporting continuous delivery practices.',
+      'Collaborated in sprint planning and daily stand-ups to define critical quality assurance tasks and scope product features.',
+    ],
   },
   {
     role: 'Undergraduate Teaching Assistant',
     organization: 'University of British Columbia',
-    period: 'Jul. 2025 – Present',
-    contribution:
-      'Guide students through Java, object-oriented design, testing, and debugging in labs and office hours.',
+    period: 'Jul. 2025 - Present',
+    logo: {
+      src: '/experience/ubc.png',
+      alt: 'University of British Columbia logo',
+      layout: 'portrait',
+    },
+    highlights: [
+      'Facilitate lab sessions and office hours by guiding students through Java programming exercises, object-oriented design, and debugging practices to strengthen their understanding of core software development concepts.',
+      'Review student code submissions and provide feedback on best practices, unit testing, and modular design while collaborating with course staff to improve instructional materials and learning outcomes.',
+    ],
   },
   {
     role: 'Design Engineer',
     organization: 'FPS Food Process Solutions',
-    period: 'Nov. 2023 – Sep. 2024',
-    contribution:
-      'Led industrial equipment design work while coordinating requirements and manufacturability across international teams and suppliers.',
-  },
-]
-
-export const education: Education[] = [
-  {
-    degree: 'Bachelor of Computer Science',
-    institution: 'University of British Columbia',
-    period: 'Sept. 2024 – May 2028',
-  },
-  {
-    degree: 'Bachelor of Applied Science in Mechanical Engineering',
-    institution: 'University of British Columbia',
-    period: 'Graduated 2023',
+    period: 'Nov. 2023 - Sep. 2024',
+    logo: {
+      src: '/experience/fps.jpg',
+      alt: 'FPS Food Process Solutions logo',
+    },
+    highlights: [
+      'Led the design of industrial fryer systems, collaborating with international engineering teams and suppliers to refine requirements, resolve design trade-offs, and ensure reliable manufacturability and production outcomes.',
+      'Produced detailed CAD models and technical drawings, supporting consistent assembly, performance verification, and cross-functional reviews with production staff.',
+    ],
   },
 ]

@@ -60,21 +60,11 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .experience-layout {
-    display: grid;
-    align-items: start;
-    gap: 40px;
-    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-  }
-
   @media (max-width: 920px) {
     .projects-grid {
       grid-template-columns: 1fr;
     }
 
-    .experience-layout {
-      grid-template-columns: 1fr;
-    }
   }
 
   @media (max-width: 768px) {

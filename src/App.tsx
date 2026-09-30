@@ -5,7 +5,7 @@ import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Navigation } from './components/Navigation'
 import { Projects } from './components/Projects'
-import { education, experiences, profile, projects } from './data/profile'
+import { experiences, profile, projects } from './data/profile'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Hero />
         <About profile={profile} />
         <Projects projects={projects} />
-        <ExperienceTimeline experiences={experiences} education={education} />
+        <ExperienceTimeline experiences={experiences} />
         <Contact profile={profile} />
       </main>
       <Footer profile={profile} />
