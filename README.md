@@ -1,39 +1,53 @@
-# Jacky Liang Portfolio
+# Jacky Liang - Portfolio
 
-React, TypeScript, Vite, and custom CSS portfolio website for showcasing full-stack software engineering work.
+This is my personal portfolio website. I built it to share the projects and experiences behind my transition from mechanical engineering to software development, with an emphasis on showing real products rather than presenting long case studies.
 
-## Tech stack
+The site highlights my full-stack work, including a loyalty rewards platform used by a Vancouver salon and a browser game called Return to the Office. It also introduces my technical background, work experience, and the interests that shape who I am outside of software.
+
+## What is included
+
+- Responsive project cards with live demos, source links, and screenshot galleries
+- A categorized overview of the languages, frameworks, testing tools, and platforms I use
+- A timeline of my software development, testing, teaching, and engineering experience
+- Light and dark themes
+
+## Built with
 
 - React
 - TypeScript
 - Vite
-- Custom responsive CSS
-- Oxlint
+- Custom CSS
 
-## Scripts
+## Run locally
+
+You will need Node.js and npm installed.
+
+1. Clone the repository and enter the project directory:
+
+   ```bash
+   git clone https://github.com/jackyliang1128/portfolio.git
+   cd portfolio
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open the local URL shown by Vite, normally `http://localhost:5173`.
+
+## Available commands
 
 ```bash
-npm run dev
-npm run build
-npm run lint
-npm run preview
+npm run dev      # Start the development server
+npm run build    # Type-check and create a production build
+npm run lint     # Run Oxlint
+npm run preview  # Preview the production build locally
 ```
-
-## Content model
-
-Portfolio content lives in `src\data\profile.ts` as typed TypeScript data:
-
-- Profile summary and social links
-- Featured and supporting project cards
-- Real project screenshots and engineering details
-- Experience entries
-- Education entries
-
-This keeps content updates separate from layout components.
-
-## Deployment checklist
-
-- Deploy the production build to Vercel.
-- Connect and verify the custom domain.
-- Confirm the resume and all external project links from the deployed site.
-- Add the stable custom-domain URL to the resume.
