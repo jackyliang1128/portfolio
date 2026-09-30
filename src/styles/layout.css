@@ -10,6 +10,54 @@
     scroll-margin-top: 72px;
   }
 
+  main > .section:not(.hero):not(#about) {
+    position: relative;
+  }
+
+  main > .section:not(.hero):not(#about)::before {
+    position: absolute;
+    top: -6px;
+    right: 24px;
+    left: 24px;
+    height: 12px;
+    background:
+      radial-gradient(circle at 24% 50%, var(--accent-cyan) 0 2px, transparent 2.5px),
+      radial-gradient(circle at 36% 50%, var(--accent-blue) 0 2px, transparent 2.5px),
+      radial-gradient(circle at 64% 50%, var(--accent-blue) 0 2px, transparent 2.5px),
+      radial-gradient(circle at 76% 50%, var(--accent-cyan) 0 2px, transparent 2.5px),
+      linear-gradient(
+          90deg,
+          transparent,
+          color-mix(in srgb, var(--accent-blue) 42%, transparent) 16%,
+          var(--accent-cyan) 38%,
+          var(--accent-blue) 50%,
+          var(--accent-cyan) 62%,
+          color-mix(in srgb, var(--accent-blue) 42%, transparent) 84%,
+          transparent
+        )
+        center / 100% 2px no-repeat;
+    content: '';
+    opacity: 0.78;
+    pointer-events: none;
+  }
+
+  main > .section:not(.hero):not(#about)::after {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent-cyan);
+    border-radius: 3px;
+    background: var(--background);
+    box-shadow:
+      0 0 0 5px var(--background),
+      0 0 18px color-mix(in srgb, var(--accent-cyan) 42%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
   .hero {
     position: relative;
     display: flex;
