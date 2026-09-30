@@ -8,6 +8,17 @@ export type SocialLink = {
   href: string
 }
 
+export type TechnicalSkill = {
+  name: string
+  icons: string[]
+}
+
+export type SkillGroup = {
+  label: string
+  description: string
+  skills: TechnicalSkill[]
+}
+
 export type ProjectImage = {
   src: string
   alt: string
@@ -22,6 +33,7 @@ export type Profile = {
   location: string
   email: string
   about: string[]
+  skillGroups: SkillGroup[]
   resumeUrl: string
   navigation: NavigationLink[]
   socials: SocialLink[]
@@ -33,7 +45,6 @@ export type Project = {
   tier: 'featured' | 'supporting'
   stack: string[]
   summary: string
-  details: string[]
   sourceUrl?: string
   demoUrl?: string
   demoLabel?: string
@@ -64,6 +75,54 @@ export const profile: Profile = {
     'I believe software development, at its core, is about problem solving. I enjoy the process of taking something complex, breaking it down, and continuously iterating on the design until I arrive at an innovative and effective solution that is simple and useful.',
     'Outside of software, I enjoy snowboarding, playing ultimate frisbee and volleyball, working out, and spending time outdoors. I am always up for trying something new, especially if it gets me outside.',
   ],
+  skillGroups: [
+    {
+      label: 'Languages',
+      description: 'The languages I use to turn ideas into interfaces, APIs, and data-driven applications.',
+      skills: [
+        { name: 'Java', icons: ['/skills/java.svg'] },
+        { name: 'JavaScript', icons: ['/skills/javascript.svg'] },
+        { name: 'HTML', icons: ['/skills/html5.svg'] },
+        { name: 'CSS', icons: ['/skills/css3.svg'] },
+        { name: 'Python', icons: ['/skills/python.svg'] },
+        { name: 'PHP', icons: ['/skills/php.svg'] },
+        { name: 'SQL', icons: ['/skills/sql.svg'] },
+      ],
+    },
+    {
+      label: 'Frameworks',
+      description: 'My go-to tools for building full-stack products and interactive browser experiences.',
+      skills: [
+        { name: 'React', icons: ['/skills/react.svg'] },
+        { name: 'Node.js', icons: ['/skills/nodejs.svg'] },
+        { name: 'Express', icons: ['/skills/express.svg'] },
+        { name: 'Prisma', icons: ['/skills/prisma.svg'] },
+        { name: 'Phaser', icons: ['/skills/phaser.png'] },
+      ],
+    },
+    {
+      label: 'Testing',
+      description: 'Tools I use to catch regressions early and keep important workflows reliable.',
+      skills: [
+        { name: 'JUnit', icons: ['/skills/junit.svg'] },
+        { name: 'Jest', icons: ['/skills/jest.svg'] },
+        { name: 'Playwright', icons: ['/skills/playwright.svg'] },
+      ],
+    },
+    {
+      label: 'Data, Cloud & Tools',
+      description: 'The platforms behind the databases, deployments, and team workflows in my projects.',
+      skills: [
+        { name: 'PostgreSQL', icons: ['/skills/postgresql.svg'] },
+        { name: 'Oracle', icons: ['/skills/oracle.svg'] },
+        { name: 'AWS', icons: ['/skills/aws.svg'] },
+        { name: 'Azure', icons: ['/skills/azure.svg'] },
+        { name: 'Docker', icons: ['/skills/docker.svg'] },
+        { name: 'Git', icons: ['/skills/git.svg'] },
+        { name: 'Bitbucket', icons: ['/skills/bitbucket.svg'] },
+      ],
+    },
+  ],
   resumeUrl: '/resume/Jacky_Resume.pdf',
   navigation: [
     { label: 'About', href: '#about' },
@@ -86,11 +145,6 @@ export const projects: Project[] = [
     stack: ['React', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'AWS'],
     summary:
       'A loyalty platform used by a Vancouver salon to manage customer points, staff check-ins, and reward redemption.',
-    details: [
-      'Designed relational data models and REST APIs for customers, point transactions, rewards, and business operations.',
-      'Implemented JWT authentication and role-based workflows for administrators, employees, and customers.',
-      'Deployed the application on AWS with an automated delivery workflow.',
-    ],
     demoUrl: 'https://app.sparklenailsvancouver.com/demo',
     demoLabel: 'Try Demo',
     primaryImage: {
@@ -98,7 +152,7 @@ export const projects: Project[] = [
       alt: 'Loyalty Rewards demo dashboard showing sample customer and points activity',
       width: 1440,
       height: 1000,
-      caption: 'Admin dashboard · demo data',
+      caption: 'Admin dashboard',
     },
     gallery: [
       {
@@ -106,14 +160,35 @@ export const projects: Project[] = [
         alt: 'Employee check-in screen with a sample phone number keypad',
         width: 1440,
         height: 1000,
-        caption: 'Employee check-in · demo data',
+        caption: 'Employee check-in kiosk',
       },
       {
         src: '/projects/loyalty-rewards.webp',
         alt: 'Customer rewards screen showing sample rewards and point costs',
         width: 1440,
         height: 1000,
-        caption: 'Customer rewards · demo data',
+        caption: 'Customer rewards page',
+      },
+      {
+        src: '/projects/loyalty-customers.webp',
+        alt: 'Loyalty Rewards demo customer management screen with sample customer records',
+        width: 1440,
+        height: 1000,
+        caption: 'Customer management · demo data',
+      },
+      {
+        src: '/projects/loyalty-employees.webp',
+        alt: 'Loyalty Rewards demo employee management screen with sample staff accounts',
+        width: 1440,
+        height: 1000,
+        caption: 'Employee access management · demo data',
+      },
+      {
+        src: '/projects/loyalty-business.webp',
+        alt: 'Loyalty Rewards demo business screen showing sample services and workers',
+        width: 1440,
+        height: 1000,
+        caption: 'Business services and workers · demo data',
       },
     ],
   },
@@ -124,28 +199,44 @@ export const projects: Project[] = [
     stack: ['JavaScript', 'Phaser 3', 'Vite', 'Vercel'],
     summary:
       'A browser survival game where players battle office-themed enemies, collect upgrades, and survive escalating waves.',
-    details: [
-      'Organized gameplay into modular scenes and reusable player, enemy, boss, and pickup entities.',
-      'Built reusable combat and upgrade systems for targeting, projectiles, and stacked effects.',
-      'Implemented XP progression and configurable difficulty that escalates throughout a run.',
-    ],
     sourceUrl: 'https://github.com/jackyliang1128/office-survival-game',
     demoUrl: 'https://return-to-the-office.vercel.app/',
     demoLabel: 'Play Game',
     primaryImage: {
-      src: '/projects/office-gameplay.webp',
-      alt: 'Return to the Office gameplay with the player surrounded by office-themed enemies',
-      width: 1280,
-      height: 680,
-      caption: 'Active browser gameplay',
+      src: '/projects/office-titlescreen.webp',
+      alt: 'Return to the Office start screen with the game title and Start Game button',
+      width: 1727,
+      height: 907,
+      caption: 'Game start screen',
     },
     gallery: [
+      {
+        src: '/projects/office-gameplay.webp',
+        alt: 'Return to the Office gameplay with the player surrounded by office-themed enemies',
+        width: 1280,
+        height: 680,
+        caption: 'Active browser gameplay',
+      },
       {
         src: '/projects/office-upgrade.webp',
         alt: 'Return to the Office level-up screen with three upgrade choices',
         width: 1280,
         height: 680,
         caption: 'Upgrade selection during a run',
+      },
+      {
+        src: '/projects/office-boss.webp',
+        alt: 'Return to the Office gameplay showing a boss incoming warning for the Striker',
+        width: 1733,
+        height: 919,
+        caption: 'Boss encounter warning',
+      },
+      {
+        src: '/projects/office-gameover.webp',
+        alt: 'Return to the Office game over screen showing the final score and run statistics',
+        width: 1735,
+        height: 920,
+        caption: 'End-of-run results',
       },
     ],
   },
@@ -156,11 +247,6 @@ export const projects: Project[] = [
     stack: ['Java', 'SQL', 'Oracle'],
     summary:
       'A Java and Oracle application for organizing hiking trails, campsites, weather records, and outdoor trips.',
-    details: [
-      'Modeled relationships across users, trails, campsites, weather records, reviews, and photos.',
-      'Connected interactive Java UI panels to database CRUD operations.',
-      'Enforced input validation and database constraints to keep records consistent.',
-    ],
     sourceUrl: 'https://github.com/jackyliang1128/Outdoor-Activity-Management-System',
   },
   {
@@ -170,11 +256,6 @@ export const projects: Project[] = [
     stack: ['Java', 'Swing', 'JUnit', 'JSON'],
     summary:
       'A desktop fitness tracker for building workout plans, recording exercises, and saving workout history.',
-    details: [
-      'Designed object-oriented models for exercises and personalized workout plans.',
-      'Implemented JSON persistence to save and restore workout data.',
-      'Tested core logic, edge cases, and exception handling with JUnit.',
-    ],
     sourceUrl: 'https://github.com/jackyliang1128/Fitness-Tracker',
   },
 ]

@@ -25,6 +25,36 @@ export function About({ profile }: AboutProps) {
           />
         </div>
       </div>
+
+      <div className="technical-skills" role="region" aria-label="Technical skills" data-reveal>
+        <div className="technical-skills__groups">
+          {profile.skillGroups.map((group) => (
+            <article className="skill-group" key={group.label}>
+              <h4>{group.label}</h4>
+              <p className="skill-group__description">{group.description}</p>
+              <ul className="skill-group__list">
+                {group.skills.map((skill) => (
+                  <li className="skill-item" key={skill.name} tabIndex={0}>
+                    <span className="skill-item__logos" aria-hidden="true">
+                      {skill.icons.map((icon) => (
+                        <img
+                          src={icon}
+                          alt=""
+                          width="40"
+                          height="40"
+                          loading="lazy"
+                          key={icon}
+                        />
+                      ))}
+                    </span>
+                    <span className="skill-item__name">{skill.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
     </Section>
   )
 }
