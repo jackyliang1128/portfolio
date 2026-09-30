@@ -1,5 +1,5 @@
-import type { CSSProperties } from 'react'
 import type { Profile } from '../data/profile'
+import { Section } from './Section'
 
 type AboutProps = {
   profile: Profile
@@ -7,38 +7,54 @@ type AboutProps = {
 
 export function About({ profile }: AboutProps) {
   return (
-    <section id="about" className="section about-section">
-      <div className="about-section__content" data-reveal>
-        <p className="section__eyebrow">About</p>
-        <h2 className="section__title">A developer with full-stack, QA, and systems thinking.</h2>
+    <Section id="about" title="About Me">
+      <div className="about-card card" data-reveal>
         <div className="about-section__copy">
-          <p>
-            I enjoy building software that is practical, maintainable, and easy to use. My
-            background combines full-stack development, software testing, and engineering systems,
-            which helps me think about both product experience and technical reliability.
-          </p>
-          <p>
-            I have worked on production web platforms, automated testing workflows, deployment
-            improvements, and data-backed applications. I am especially interested in full-stack
-            roles where I can contribute across frontend, backend, testing, and delivery.
-          </p>
+          {profile.about.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+
+        <div className="about-section__portrait">
+          <img
+            src="/about/me.PNG"
+            alt="me"
+            width="864"
+            height="1184"
+            loading="eager"
+          />
         </div>
       </div>
 
-      <div className="about-card-grid">
-        {profile.highlights.map((highlight, index) => (
-          <article
-            key={highlight.title}
-            className="about-card card"
-            data-reveal
-            style={{ '--reveal-delay': `${index * 80}ms` } as CSSProperties}
-          >
-            <div className="about-card__metric">{highlight.metric}</div>
-            <h3>{highlight.title}</h3>
-            <p>{highlight.description}</p>
-          </article>
-        ))}
+      <div className="technical-skills" role="region" aria-label="Technical skills" data-reveal>
+        <div className="technical-skills__groups">
+          {profile.skillGroups.map((group) => (
+            <article className="skill-group" key={group.label}>
+              <h4>{group.label}</h4>
+              <p className="skill-group__description">{group.description}</p>
+              <ul className="skill-group__list">
+                {group.skills.map((skill) => (
+                  <li className="skill-item" key={skill.name} tabIndex={0}>
+                    <span className="skill-item__logos" aria-hidden="true">
+                      {skill.icons.map((icon) => (
+                        <img
+                          src={icon}
+                          alt=""
+                          width="40"
+                          height="40"
+                          loading="lazy"
+                          key={icon}
+                        />
+                      ))}
+                    </span>
+                    <span className="skill-item__name">{skill.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
-    </section>
+    </Section>
   )
 }

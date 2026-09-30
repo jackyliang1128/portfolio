@@ -5,14 +5,26 @@ export type NavigationLink = {
 
 export type SocialLink = {
   label: string
-  href?: string
-  status: 'ready' | 'pending'
+  href: string
 }
 
-export type ProfileHighlight = {
-  metric: string
-  title: string
+export type TechnicalSkill = {
+  name: string
+  icons: string[]
+}
+
+export type SkillGroup = {
+  label: string
   description: string
+  skills: TechnicalSkill[]
+}
+
+export type ProjectImage = {
+  src: string
+  alt: string
+  width: number
+  height: number
+  caption?: string
 }
 
 export type Profile = {
@@ -20,175 +32,230 @@ export type Profile = {
   role: string
   location: string
   email: string
-  summary: string
-  availability: string
+  about: string[]
+  skillGroups: SkillGroup[]
+  resumeUrl: string
   navigation: NavigationLink[]
   socials: SocialLink[]
-  highlights: ProfileHighlight[]
 }
 
 export type Project = {
+  id: string
   name: string
-  visualKind: 'database' | 'fitness' | 'accessibility' | 'pipeline'
+  tier: 'featured' | 'supporting'
   stack: string[]
   summary: string
-  impact: string
-  highlights: string[]
   sourceUrl?: string
   demoUrl?: string
-  showcasePlan: string
-}
-
-export type SkillCategory = {
-  name: string
-  description: string
-  skills: string[]
+  demoLabel?: string
+  primaryImage?: ProjectImage
+  gallery?: ProjectImage[]
 }
 
 export type Experience = {
   role: string
   organization: string
   period: string
-  summary: string
+  logo: {
+    src: string
+    alt: string
+    layout?: 'wide' | 'portrait'
+  }
   highlights: string[]
-}
-
-export type Education = {
-  degree: string
-  institution: string
-  period: string
 }
 
 export const profile: Profile = {
   name: 'Jacky Liang',
-  role: 'Computer Science Student & Full-Stack Developer',
+  role: 'Full-Stack Software Engineer',
   location: 'Vancouver, BC',
   email: 'jackyliang1128@gmail.com',
-  summary:
-    'UBC computer science student building production web platforms, automated regression pipelines, and applied software systems across web, testing, data, and hardware-adjacent domains.',
-  availability: 'Seeking full-stack software engineering opportunities.',
+  about: [
+    'I am a Computer Science student at the University of British Columbia with a background in Mechanical Engineering. My path into software started with a curiosity about how things work and evolved into a passion for turning ideas into projects that are useful to the people around me.',
+    'I believe software development, at its core, is about problem solving. I enjoy the process of taking something complex, breaking it down, and continuously iterating on the design until I arrive at an innovative and effective solution that is simple and useful.',
+    'Outside of software, I enjoy snowboarding, playing ultimate frisbee and volleyball, working out, and spending time outdoors. I am always up for trying something new, especially if it gets me outside.',
+  ],
+  skillGroups: [
+    {
+      label: 'Languages',
+      description: 'The languages I use to turn ideas into interfaces, APIs, and data-driven applications.',
+      skills: [
+        { name: 'Java', icons: ['/skills/java.svg'] },
+        { name: 'JavaScript', icons: ['/skills/javascript.svg'] },
+        { name: 'HTML', icons: ['/skills/html5.svg'] },
+        { name: 'CSS', icons: ['/skills/css3.svg'] },
+        { name: 'Python', icons: ['/skills/python.svg'] },
+        { name: 'PHP', icons: ['/skills/php.svg'] },
+        { name: 'SQL', icons: ['/skills/sql.svg'] },
+      ],
+    },
+    {
+      label: 'Frameworks',
+      description: 'My go-to tools for building full-stack products and interactive browser experiences.',
+      skills: [
+        { name: 'React', icons: ['/skills/react.svg'] },
+        { name: 'Node.js', icons: ['/skills/nodejs.svg'] },
+        { name: 'Express', icons: ['/skills/express.svg'] },
+        { name: 'Prisma', icons: ['/skills/prisma.svg'] },
+        { name: 'Phaser', icons: ['/skills/phaser.png'] },
+      ],
+    },
+    {
+      label: 'Testing',
+      description: 'Tools I use to catch regressions early and keep important workflows reliable.',
+      skills: [
+        { name: 'JUnit', icons: ['/skills/junit.svg'] },
+        { name: 'Jest', icons: ['/skills/jest.svg'] },
+        { name: 'Playwright', icons: ['/skills/playwright.svg'] },
+      ],
+    },
+    {
+      label: 'Data, Cloud & Tools',
+      description: 'The platforms behind the databases, deployments, and team workflows in my projects.',
+      skills: [
+        { name: 'PostgreSQL', icons: ['/skills/postgresql.svg'] },
+        { name: 'Oracle', icons: ['/skills/oracle.svg'] },
+        { name: 'AWS', icons: ['/skills/aws.svg'] },
+        { name: 'Azure', icons: ['/skills/azure.svg'] },
+        { name: 'Docker', icons: ['/skills/docker.svg'] },
+        { name: 'Git', icons: ['/skills/git.svg'] },
+        { name: 'Bitbucket', icons: ['/skills/bitbucket.svg'] },
+      ],
+    },
+  ],
+  resumeUrl: '/resume/Jacky_Resume.pdf',
   navigation: [
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ],
   socials: [
-    { label: 'GitHub', href: undefined, status: 'pending' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/jackyliang-/', status: 'ready' },
-    { label: 'Resume', href: undefined, status: 'pending' },
-  ],
-  highlights: [
-    {
-      metric: 'Production',
-      title: 'Full-stack delivery',
-      description:
-        'Building Drupal, PHP, PostgreSQL, Azure App Service, and authentication features for public enterprise web properties.',
-    },
-    {
-      metric: 'CI/CD',
-      title: 'Quality automation',
-      description:
-        'Integrating Jest and Playwright suites into delivery pipelines to catch regressions and support continuous delivery.',
-    },
-    {
-      metric: '<0.15s',
-      title: 'Real-time systems mindset',
-      description:
-        'Engineered a sensor glove control pipeline that met low-latency robotic arm response requirements.',
-    },
+    { label: 'GitHub', href: 'https://github.com/jackyliang1128' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/jackyyliang/' },
+    { label: 'Resume', href: '/resume/Jacky_Resume.pdf' },
   ],
 }
 
 export const projects: Project[] = [
   {
-    name: 'Outdoor Activity Management System',
-    visualKind: 'database',
+    id: 'loyalty-rewards',
+    name: 'Loyalty Rewards Platform',
+    tier: 'featured',
+    stack: ['React', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'AWS'],
+    summary:
+      'A loyalty platform used by a Vancouver salon to manage customer points, staff check-ins, and reward redemption.',
+    demoUrl: 'https://app.sparklenailsvancouver.com/demo',
+    demoLabel: 'Try Demo',
+    primaryImage: {
+      src: '/projects/loyalty-dashboard.webp',
+      alt: 'Loyalty Rewards demo dashboard showing sample customer and points activity',
+      width: 1440,
+      height: 1000,
+      caption: 'Admin dashboard',
+    },
+    gallery: [
+      {
+        src: '/projects/loyalty-checkin.webp',
+        alt: 'Employee check-in screen with a sample phone number keypad',
+        width: 1440,
+        height: 1000,
+        caption: 'Employee check-in kiosk',
+      },
+      {
+        src: '/projects/loyalty-rewards.webp',
+        alt: 'Customer rewards screen showing sample rewards and point costs',
+        width: 1440,
+        height: 1000,
+        caption: 'Customer rewards page',
+      },
+      {
+        src: '/projects/loyalty-customers.webp',
+        alt: 'Loyalty Rewards demo customer management screen with sample customer records',
+        width: 1440,
+        height: 1000,
+        caption: 'Customer management · demo data',
+      },
+      {
+        src: '/projects/loyalty-employees.webp',
+        alt: 'Loyalty Rewards demo employee management screen with sample staff accounts',
+        width: 1440,
+        height: 1000,
+        caption: 'Employee access management · demo data',
+      },
+      {
+        src: '/projects/loyalty-business.webp',
+        alt: 'Loyalty Rewards demo business screen showing sample services and workers',
+        width: 1440,
+        height: 1000,
+        caption: 'Business services and workers · demo data',
+      },
+    ],
+  },
+  {
+    id: 'return-to-office',
+    name: 'Return to the Office',
+    tier: 'featured',
+    stack: ['JavaScript', 'Phaser 3', 'Vite', 'Vercel'],
+    summary:
+      'A browser survival game where players battle office-themed enemies, collect upgrades, and survive escalating waves.',
+    sourceUrl: 'https://github.com/jackyliang1128/office-survival-game',
+    demoUrl: 'https://return-to-the-office.vercel.app/',
+    demoLabel: 'Play Game',
+    primaryImage: {
+      src: '/projects/office-titlescreen.webp',
+      alt: 'Return to the Office start screen with the game title and Start Game button',
+      width: 1727,
+      height: 907,
+      caption: 'Game start screen',
+    },
+    gallery: [
+      {
+        src: '/projects/office-gameplay.webp',
+        alt: 'Return to the Office gameplay with the player surrounded by office-themed enemies',
+        width: 1280,
+        height: 680,
+        caption: 'Active browser gameplay',
+      },
+      {
+        src: '/projects/office-upgrade.webp',
+        alt: 'Return to the Office level-up screen with three upgrade choices',
+        width: 1280,
+        height: 680,
+        caption: 'Upgrade selection during a run',
+      },
+      {
+        src: '/projects/office-boss.webp',
+        alt: 'Return to the Office gameplay showing a boss incoming warning for the Striker',
+        width: 1733,
+        height: 919,
+        caption: 'Boss encounter warning',
+      },
+      {
+        src: '/projects/office-gameover.webp',
+        alt: 'Return to the Office game over screen showing the final score and run statistics',
+        width: 1735,
+        height: 920,
+        caption: 'End-of-run results',
+      },
+    ],
+  },
+  {
+    id: 'outdoor-activity',
+    name: 'Outdoor Activity Manager',
+    tier: 'supporting',
     stack: ['Java', 'SQL', 'Oracle'],
     summary:
-      'A database-backed application for managing hiking trails, campsites, weather logs, and trip records through interactive UI panels.',
-    impact:
-      'Demonstrates relational modeling, backend CRUD design, input validation, and data integrity across a 16-schema Oracle database.',
-    highlights: [
-      'Designed tables, relationships, and seed data for a stable backend foundation.',
-      'Connected Java UI panels to Oracle CRUD operations for viewing, updating, and managing outdoor activity data.',
-      'Enforced constraints and validation rules to keep user data reliable.',
-    ],
-    showcasePlan: 'Use as a case-study card with schema notes, screenshots, and a GitHub link when available.',
+      'A Java and Oracle application for organizing hiking trails, campsites, weather records, and outdoor trips.',
+    sourceUrl: 'https://github.com/jackyliang1128/Outdoor-Activity-Management-System',
   },
   {
+    id: 'fittrack',
     name: 'FitTrack',
-    visualKind: 'fitness',
-    stack: ['Java', 'JUnit', 'Swing', 'Git'],
+    tier: 'supporting',
+    stack: ['Java', 'Swing', 'JUnit', 'JSON'],
     summary:
-      'A desktop fitness tracker for recording activities, personalizing workout plans, and visualizing user progress.',
-    impact:
-      'Shows object-oriented design, persistence, test coverage, and iterative feature development in a Java application.',
-    highlights: [
-      'Architected an object-oriented domain model for activities, plans, and progress tracking.',
-      'Implemented JSON persistence for loading and saving workout history.',
-      'Built comprehensive JUnit coverage across statements, branches, functions, edge cases, and exceptions.',
-    ],
-    showcasePlan: 'Best showcased with screenshots, repository notes, and a short walkthrough GIF later.',
-  },
-  {
-    name: 'WCAG Guidelines Checker',
-    visualKind: 'accessibility',
-    stack: ['React', 'JavaScript', 'HTML', 'CSS'],
-    summary:
-      'A React accessibility evaluation tool that checks web content against WCAG-inspired rules and provides real-time remediation suggestions.',
-    impact:
-      'Directly relevant to frontend quality because it combines UI development, content parsing, and accessible user feedback.',
-    highlights: [
-      'Built modular JavaScript analysis logic for identifying accessibility violations.',
-      'Presented findings through a responsive React interface optimized for rapid scanning.',
-      'Focused suggestions on actionable remediation rather than generic pass/fail output.',
-    ],
-    showcasePlan: 'Strong candidate for a future hosted demo because it is frontend-focused and easy to deploy.',
-  },
-  {
-    name: 'Sensor Glove Capstone Project',
-    visualKind: 'pipeline',
-    stack: ['Python', 'C#', 'OpenCV', '.NET'],
-    summary:
-      'A wearable control system enabling researchers to remotely operate a robotic arm with precise gesture input.',
-    impact:
-      'Highlights applied engineering, real-time computer vision, cross-language integration, and performance tuning.',
-    highlights: [
-      'Built an OpenCV gesture detection pipeline to process sensor input in real time.',
-      'Implemented the communication layer between the glove and robotic arm.',
-      'Tuned gesture-classification algorithms to meet latency and error-rate requirements.',
-    ],
-    showcasePlan: 'Best showcased with photos, architecture diagrams, and performance metrics instead of a web demo.',
-  },
-]
-
-export const skillCategories: SkillCategory[] = [
-  {
-    name: 'Frontend Systems',
-    description: 'Building responsive, accessible interfaces with clean component structure.',
-    skills: ['React', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Accessibility'],
-  },
-  {
-    name: 'Backend & Data',
-    description: 'Designing backend logic, database workflows, and data-backed application features.',
-    skills: ['Java', 'PHP 8.3+', 'PostgreSQL', 'Oracle SQL', 'Drupal 11', 'Java/Spring Boot'],
-  },
-  {
-    name: 'Quality Engineering',
-    description: 'Creating automated checks and improving confidence in product delivery.',
-    skills: ['Playwright', 'Jest', 'JUnit', 'Regression Testing', 'QA Workflows', 'Sentry'],
-  },
-  {
-    name: 'Cloud & Delivery',
-    description: 'Supporting deployment workflows and reducing friction in release processes.',
-    skills: ['Azure App Service', 'Docker', 'AWS', 'Git', 'Bitbucket CI/CD'],
-  },
-  {
-    name: 'Programming Foundations',
-    description: 'Applying computer science fundamentals to practical engineering problems.',
-    skills: ['Python', 'C++', 'C#', 'R', '.NET', 'Systems Thinking'],
+      'A desktop fitness tracker for building workout plans, recording exercises, and saving workout history.',
+    sourceUrl: 'https://github.com/jackyliang1128/Fitness-Tracker',
   },
 ]
 
@@ -196,61 +263,58 @@ export const experiences: Experience[] = [
   {
     role: 'Full Stack Developer',
     organization: 'BC Liquor Distribution Branch',
-    period: 'Jan. 2026 - Current',
-    summary:
-      'Building production website features and deployment automation for enterprise public web platforms.',
+    period: 'Jan. 2026 - Aug. 2026',
+    logo: {
+      src: '/experience/bcldb.png',
+      alt: 'BC Liquor Distribution Branch logo',
+      layout: 'wide',
+    },
     highlights: [
-      'Supports bcldb.com, cannabis content pages, wholesale.bcldb.com, and miniOrange authentication using Drupal 11, PHP 8.3+, PostgreSQL, and Azure App Service.',
-      'Designed automated deployment delivery that reduced expected production downtime from 4 hours to 30 minutes.',
-      'Developing CI/CD automation for a Java/Spring Boot B2B shipping-rate calculation service.',
+      'Developed features for BCLDB\'s Drupal platform using PHP, PostgreSQL, and Azure App Service, supporting three enterprise web applications and a miniOrange authentication integration.',
+      'Designed reusable CI/CD workflows for Drupal and Spring Boot applications to automate builds, testing, and deployments across three environments, reducing manual deployment steps and standardizing enterprise releases.',
+      'Engineered automated Drupal deployment workflows using GitHub Actions and Azure OIDC, reducing expected production deployment downtime from four hours to 30 minutes.',
     ],
   },
   {
     role: 'Software Development Engineer in Test',
     organization: 'OnTraccr Technologies',
     period: 'Sep. 2025 - Dec. 2025',
-    summary:
-      'Created automated regression coverage and supported delivery quality through test suites, Jira reporting, and PR review.',
+    logo: {
+      src: '/experience/ontraccr.jpg',
+      alt: 'OnTraccr Technologies logo',
+      layout: 'portrait',
+    },
     highlights: [
-      'Developed backend Jest suites and end-to-end Playwright tests for bug analysis and edge-case discovery.',
-      'Integrated tests into Bitbucket CI/CD to run automated regression checks on every build.',
-      'Collaborated in sprint planning and stand-ups to scope product features and critical QA tasks.',
+      'Developed automated backend test suites with Jest and end-to-end UI tests using Playwright to analyze bugs, identify edge cases, provide detailed Jira reports, and perform pull request reviews.',
+      'Integrated test suites into the Bitbucket CI/CD build and deployment pipeline, enabling automated regression checks on every build, reducing production defects, and supporting continuous delivery practices.',
+      'Collaborated in sprint planning and daily stand-ups to define critical quality assurance tasks and scope product features.',
     ],
   },
   {
     role: 'Undergraduate Teaching Assistant',
     organization: 'University of British Columbia',
-    period: 'Jul. 2025 - Current',
-    summary:
-      'Guiding students through Java programming, object-oriented design, debugging, testing, and modular code practices.',
+    period: 'Jul. 2025 - Present',
+    logo: {
+      src: '/experience/ubc.png',
+      alt: 'University of British Columbia logo',
+      layout: 'portrait',
+    },
     highlights: [
-      'Facilitated lab sessions and office hours for Java programming exercises.',
-      'Reviewed student submissions and provided feedback on unit testing, modularity, and best practices.',
-      'Collaborated with course staff to improve instructional materials and learning outcomes.',
+      'Facilitate lab sessions and office hours by guiding students through Java programming exercises, object-oriented design, and debugging practices to strengthen their understanding of core software development concepts.',
+      'Review student code submissions and provide feedback on best practices, unit testing, and modular design while collaborating with course staff to improve instructional materials and learning outcomes.',
     ],
   },
   {
     role: 'Design Engineer',
     organization: 'FPS Food Process Solutions',
     period: 'Nov. 2023 - Sep. 2024',
-    summary:
-      'Led mechanical design work for industrial fryer systems while coordinating requirements, trade-offs, and manufacturability.',
+    logo: {
+      src: '/experience/fps.jpg',
+      alt: 'FPS Food Process Solutions logo',
+    },
     highlights: [
-      'Collaborated with international engineering teams and suppliers to refine requirements and resolve design trade-offs.',
-      'Produced detailed CAD models and technical drawings for assembly, verification, and production review.',
+      'Led the design of industrial fryer systems, collaborating with international engineering teams and suppliers to refine requirements, resolve design trade-offs, and ensure reliable manufacturability and production outcomes.',
+      'Produced detailed CAD models and technical drawings, supporting consistent assembly, performance verification, and cross-functional reviews with production staff.',
     ],
-  },
-]
-
-export const education: Education[] = [
-  {
-    degree: 'Bachelor of Computer Science',
-    institution: 'University of British Columbia',
-    period: 'Sept. 2024 - May 2027',
-  },
-  {
-    degree: 'Bachelor of Applied Science in Mechanical Engineering',
-    institution: 'University of British Columbia',
-    period: 'Graduated 2023',
   },
 ]

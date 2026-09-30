@@ -2,17 +2,18 @@
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  --background: #f7fafc;
-  --surface: #ffffff;
-  --surface-soft: #f1f5f9;
-  --surface-glass: rgba(255, 255, 255, 0.9);
+  --background: #eef6fc;
+  --surface: #f8fbff;
+  --surface-soft: #e3eff8;
+  --surface-glass: rgba(248, 251, 255, 0.9);
 
   --text-primary: #111827;
   --text-secondary: #475569;
   --text-muted: #64748b;
 
-  --border: #d9e2ec;
-  --border-strong: #cbd5e1;
+  --border: #b9ccde;
+  --border-strong: #96aec5;
+  --border-width: 2px;
 
   --accent-blue: #2563eb;
   --accent-blue-strong: #1d4ed8;
@@ -42,8 +43,8 @@
   --text-5xl: 3rem;
   --text-6xl: 3.75rem;
 
-  --space-section: 96px;
-  --space-section-mobile: 72px;
+  --space-section: 30px;
+  --space-section-mobile: 56px;
   --container: 1120px;
   --container-wide: 1280px;
 

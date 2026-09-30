@@ -5,9 +5,10 @@ import { ThemeToggle } from './ThemeToggle'
 type NavigationProps = {
   links: NavigationLink[]
   name: string
+  resumeUrl: string
 }
 
-export function Navigation({ links, name }: NavigationProps) {
+export function Navigation({ links, name, resumeUrl }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuId = useId()
 
@@ -48,10 +49,12 @@ export function Navigation({ links, name }: NavigationProps) {
         <div className="nav-actions">
           <ThemeToggle />
           <a
-            href="#contact"
+            href={resumeUrl}
             className="button button--secondary button--compact nav-actions__contact"
+            target="_blank"
+            rel="noreferrer"
           >
-            Contact
+            Resume
           </a>
           <button
             type="button"
@@ -89,10 +92,12 @@ export function Navigation({ links, name }: NavigationProps) {
           <li>
             <a
               className="button button--primary mobile-menu__cta"
-              href="#contact"
+              href={resumeUrl}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact Me
+              Resume
             </a>
           </li>
         </ul>
