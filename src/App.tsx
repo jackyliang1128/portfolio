@@ -19,7 +19,7 @@ function App() {
         <About profile={profile} />
         <Projects projects={projects} />
         <ExperienceTimeline experiences={experiences} />
-        <Contact profile={profile} />
+        <Contact />
       </main>
       <Footer profile={profile} />
     </div>

@@ -1,37 +1,43 @@
-import type { Profile } from '../data/profile'
-type ContactProps = {
-  profile: Profile
-}
-
-export function Contact({ profile }: ContactProps) {
+export function Contact() {
   return (
     <section id="contact" className="section">
       <div className="contact-card" data-reveal>
-        <p className="section__eyebrow">Contact</p>
-        <h2>Let&apos;s build reliable software.</h2>
-        <p>
-          I&apos;m open to software engineering opportunities. If my work fits what your team is
-          building, I&apos;d be happy to connect.
-        </p>
-        <div className="contact-card__actions">
-          <a className="button button--primary" href={`mailto:${profile.email}`}>
-            Email Me
-          </a>
-          {profile.socials.map((social) => (
-            <a
-              key={social.label}
-              className="button button--secondary"
-              href={social.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {social.label}
-            </a>
-          ))}
+        <div className="contact-card__intro">
+          <h2>Contact Me</h2>
+          <p>
+            Feel free to reach out and connect with me. I&apos;m always happy to discuss software,
+            new opportunities, or interesting ideas.
+          </p>
         </div>
-        <a className="contact-card__email" href={`mailto:${profile.email}`}>
-          {profile.email}
-        </a>
+
+        <form
+          className="contact-form"
+          aria-describedby="contact-form-status"
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <div className="contact-form__row">
+            <label className="contact-field">
+              <span>Name</span>
+              <input type="text" name="name" autoComplete="name" placeholder="Your name" />
+            </label>
+            <label className="contact-field">
+              <span>Email</span>
+              <input type="email" name="email" autoComplete="email" placeholder="you@example.com" />
+            </label>
+          </div>
+
+          <label className="contact-field">
+            <span>Message</span>
+            <textarea name="message" rows={7} placeholder="Write your message here..." />
+          </label>
+
+          <div className="contact-form__footer">
+            <button className="button button--primary contact-form__submit" type="submit" disabled>
+              Send Message
+            </button>
+            <p id="contact-form-status">Message delivery will be available soon.</p>
+          </div>
+        </form>
       </div>
     </section>
   )
